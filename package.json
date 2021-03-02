@@ -1,0 +1,32 @@
+{
+  "name": "design_pattern",
+  "version": "1.0.0",
+  "description": "> 使用JavaScript去尝试实践部分设计模式",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack serve --config ./webpack.dev.config.js --mode development",
+    "snow-dev": "snowpack dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fireworkHy/design_pattern.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fireworkHy/design_pattern/issues"
+  },
+  "homepage": "https://github.com/fireworkHy/design_pattern#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "html-webpack-plugin": "^5.2.0",
+    "snowpack": "^3.0.13",
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
