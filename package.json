@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/fireworkHy/design_pattern#readme",
   "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.13.5",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.2.2",
     "babel-polyfill": "^6.26.0",
