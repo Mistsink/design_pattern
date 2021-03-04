@@ -1,5 +1,5 @@
 import createCart from '../ShoppingCart/Cart'
-import { createEl } from '../util'
+import { createEl, log } from '../util'
 
 class Item {
     constructor (list, info) {
@@ -22,21 +22,38 @@ class Item {
 
     initOperateBtn () {
         const operateBtn = createEl('button')
-        operateBtn.innerText = `item state`
 
+        const state = new State(this)
+
+        function updateText () {
+            operateBtn.innerText = state.text
+        }
+
+        operateBtn.onclick = () => {
+            if (state.state) {
+                state.doDel()
+                updateText()
+            } else {
+                state.doAdd()
+                updateText()
+            }
+        }
+        updateText()
         this.el.append(operateBtn)
     }
 
+    @log(`add`)
     addIntoCart () {
         this.cart.addItem(this.info)
     }
 
+    @log(`del`)
     delFromCart () {
         this.cart.delById(this.info.id)
     }
 
     render () {
-        this.list.append(this.el)
+        this.list.el.append(this.el)
     }
 
     init () {
@@ -49,4 +66,26 @@ class Item {
 
 export default function createItem (list, info) {
     return new Item(list, info)
+}
+
+
+
+class State {
+    constructor (ctx, state) {
+        this.ctx = ctx
+        this.state = state  //  state: 0 | 1
+        this.text = 'add into cart'
+    }
+
+    doAdd () {
+        this.state = 1
+        this.text = 'del from cart'
+        this.ctx.addIntoCart()
+    }
+
+    doDel () {
+        this.state = 0
+        this.text = 'add into cart'
+        this.ctx.delFromCart()
+    }
 }

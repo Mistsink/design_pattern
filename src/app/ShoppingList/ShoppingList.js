@@ -3,30 +3,31 @@ import createItem from './Item'
 
 export default class ShoppingList {
     constructor (app) {
+        console.log('app: ', app)
         this.app = app
         this.el = createEl('div')
     }
 
     fetchData () {
-        return new Promise.resolve(DATA)
+        return Promise.resolve(DATA)
     }
 
     initItemList (data) {
         data.forEach(info => {
-            console.log('initItemList this:', this)
             const item = createItem(this, info)
             item.init()
         })
     }
 
     render () {
-        this.app.app.append(this.el)
+        console.log(this.app)
+        this.app.app.appendChild(this.el)
     }
 
     init () {
         this.fetchData()
-            .then(this.initItemList)
-            .then(this.render)
+            .then((data)=>this.initItemList(data))
+            .then(()=>this.render())
     }
 
 }

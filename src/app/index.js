@@ -5,7 +5,7 @@ import ShoppingList from './ShoppingList/ShoppingList'
 
 export default class App {
 
-    constrcutor (id) {
+    constructor (id) {
         this.app = mountElement('#' + id)
     }
 
@@ -19,7 +19,13 @@ export default class App {
         shoppingList.init()
     }
 
+    render () {
+        
+    }
+
     init () {
+        this.initShoppingCart()
+        this.initShoppingList()
         console.log('init app')
     }
 }

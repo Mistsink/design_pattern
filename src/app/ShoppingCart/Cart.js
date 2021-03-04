@@ -12,19 +12,21 @@ class Cart {
     }
 
     getList () {
-        return this.list.reduce((pre, cur) => pre += '\n' + cur.name)
+        return this.list.reduce((pre, cur) => pre += '\n' + cur.name, '')
     }
 }
 
 /**
  * 单例模式
  */
-export default function createCart () {
-    let cart = null
-    return (() => {
-        if (cart === null) {
+const createCart = (() => {
+    let cart
+    let count = 0
+    return function(){
+        if (!cart) {
             cart = new Cart()
         }
         return cart
-    })()
-}
+    }
+})()
+export default createCart
